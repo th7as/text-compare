@@ -1,71 +1,41 @@
-# text-compare README
-
-This is the README for your extension "text-compare". After writing up a brief description, we recommend including the following sections.
+# Text Compare
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Compare/diff text from
+* a selection in a file or
+* the clipboard or
+* the entire content of any text file
 
-For example if there is an image subfolder under your extension project workspace:
+with
+* a selection in a file or
+* the clipboard or
+* the entire content of any text file
 
-\!\[feature X\]\(images/feature-x.png\)
+![Screenshot](https://raw.githubusercontent.com/th7as/text-compare/master/images/demo.png)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Commands
 
-## Requirements
+This extension contributes the following commands:
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### Set the source for an upcoming compare
+* `textCompare.setSourceFromSelection`: Sets the source for an upcoming compare from the text selection in the active editor.
+    If there is no text selection in the active editor then the entire text of the file is used.
+* `textCompare.setSourceFromClipboard`: Sets the source for an upcoming compare from the text in the clipboard.
+* `textCompare.setSourceFromFile`: Sets the source for an upcoming compare from the entire content of a selected text file.
 
-## Extension Settings
+### Compare the previously set source
+* `textCompare.compareSourceWithSelection`: Compares the previously set source with the text selection in the active editor.
+    If there is no text selection in the active editor then the entire text of the file is used.
+* `textCompare.compareSourceWithClipboard`: Compares the previously set source with the text in the clipboard.
+* `textCompare.compareSourceWithFile`: Compares the previously set source with the entire content of a selected text file.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### Compare immediately
+* `textCompare.compareClipboardWithSelection`: Immediately compares the text in the clipboard with the text selection in the active editor.
+    If there is no text selection in the active editor then the entire text of the file is used.
 
-For example:
+## Settings
 
-This extension contributes the following settings:
+This extension contributes the following setting:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+* `textCompare.hideCommandsInEditorContextMenu`: If enabled then hides the Text Compare commands in the editor context menu.

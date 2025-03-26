@@ -1,11 +1,15 @@
 {
     "name": "text-compare",
     "displayName": "Text Compare",
-    "description": "Compare/diff selected text with a previous selection or with the clipboard",
+    "description": "Compare/diff text from/with selection/clipboard/file",
     "publisher": "th7as",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "icon": "images/icon.png",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/th7as/text-compare.git"
+    },
     "engines": {
         "vscode": "^1.98.0"
     },
