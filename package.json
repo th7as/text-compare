@@ -3,7 +3,7 @@
     "displayName": "Text Compare",
     "description": "Compare/diff text from/with selection/clipboard/file",
     "publisher": "th7as",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "icon": "images/icon.png",
     "license": "MIT",
     "repository": {
@@ -15,6 +15,11 @@
     },
     "categories": [
         "Other"
+    ],
+    "keywords": [
+        "compare",
+        "diff",
+        "text"
     ],
     "activationEvents": [],
     "main": "./dist/extension.js",
