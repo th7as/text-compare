@@ -1,14 +1,14 @@
 # Text Compare
 
 Compare/diff text from
-* a selection in a file or
+* a selection in the active editor or
 * the clipboard or
-* the entire content of any text file
+* the content of any text file
 
 with
-* a selection in a file or
+* a selection in the active editor or
 * the clipboard or
-* the entire content of any text file
+* the content of any text file
 
 ![Screenshot](https://raw.githubusercontent.com/th7as/text-compare/master/images/demo.png)
 

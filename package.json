@@ -3,7 +3,7 @@
     "displayName": "Text Compare",
     "description": "Compare/diff text from/with selection/clipboard/file",
     "publisher": "th7as",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "icon": "images/icon.png",
     "license": "MIT",
     "repository": {
