@@ -29,8 +29,15 @@ export function activate(context: ExtensionContext): void {
         commands.registerCommand('textCompare.setSourceFromFile', async () => {
             const files = await window.showOpenDialog();
             if (files && files.length > 0) {
-                contentProvider.storage.source = (await workspace.fs.readFile(files[0])).toString();
-                contentProvider.sourceOrigin = `File: ${getDocumentName(files[0])}`;
+                await setSourceFromFile(files[0]);
+            }
+        })
+    );
+
+    context.subscriptions.push(
+        commands.registerCommand('textCompare.setSourceFromExplorer', async (file: Uri) => {
+            if (file) {
+                await setSourceFromFile(file);
             }
         })
     );
@@ -63,13 +70,15 @@ export function activate(context: ExtensionContext): void {
         commands.registerCommand('textCompare.compareSourceWithFile', async () => {
             const files = await window.showOpenDialog();
             if (files && files.length > 0) {
-                contentProvider.storage.target = (await workspace.fs.readFile(files[0])).toString();
-                await commands.executeCommand(
-                    'vscode.diff',
-                    getContentUri('source'),
-                    getContentUri('target'),
-                    `${contentProvider.sourceOrigin} ↔ File: ${getDocumentName(files[0])}`
-                );
+                await compareSourceWithFile(files[0]);
+            }
+        })
+    );
+
+    context.subscriptions.push(
+        commands.registerCommand('textCompare.compareSourceWithExplorer', async (file: Uri) => {
+            if (file) {
+                await compareSourceWithFile(file);
             }
         })
     );
@@ -108,4 +117,29 @@ function getSelectedText(): string {
 function getDocumentName(uri?: Uri): string {
     const parts = uri ? uri.path.split('/') : window.activeTextEditor?.document.uri.path.split('/');
     return parts && parts.length > 0 ? parts[parts.length - 1] : '';
+}
+
+/**
+ * Sets the specified file as the source for an upcoming compare.
+ *
+ * @param uri - Uri of the file
+ */
+async function setSourceFromFile(uri: Uri): Promise<void> {
+    contentProvider.storage.source = (await workspace.fs.readFile(uri)).toString();
+    contentProvider.sourceOrigin = `File: ${getDocumentName(uri)}`;
+}
+
+/**
+ * Compares the specified file with the source.
+ *
+ * @param uri - Uri of the file
+ */
+async function compareSourceWithFile(uri: Uri): Promise<void> {
+    contentProvider.storage.target = (await workspace.fs.readFile(uri)).toString();
+    await commands.executeCommand(
+        'vscode.diff',
+        getContentUri('source'),
+        getContentUri('target'),
+        `${contentProvider.sourceOrigin} ↔ File: ${getDocumentName(uri)}`
+    );
 }

@@ -3,7 +3,7 @@
     "displayName": "Text Compare",
     "description": "Compare/diff text from/with selection/clipboard/file",
     "publisher": "th7as",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "icon": "images/icon.png",
     "license": "MIT",
     "repository": {
@@ -59,17 +59,34 @@
                 "command": "textCompare.compareClipboardWithSelection",
                 "title": "Compare Clipboard with Selection",
                 "category": "Text Compare"
+            },
+            {
+                "command": "textCompare.setSourceFromExplorer",
+                "title": "Set Source from This File",
+                "category": "Text Compare"
+            },
+            {
+                "command": "textCompare.compareSourceWithExplorer",
+                "title": "Compare Source with This File",
+                "category": "Text Compare"
             }
         ],
         "menus": {
             "editor/context": [
                 {
-                    "submenu": "textCompare.submenu",
+                    "submenu": "textCompare.editorSubmenu",
                     "group": "3_textCompare",
                     "when": "!config.textCompare.hideCommandsInEditorContextMenu"
                 }
             ],
-            "textCompare.submenu": [
+            "explorer/context": [
+                {
+                    "submenu": "textCompare.explorerSubmenu",
+                    "group": "3_compare",
+                    "when": "!config.textCompare.hideCommandsInExplorerContextMenu"
+                }
+            ],
+            "textCompare.editorSubmenu": [
                 {
                     "command": "textCompare.setSourceFromSelection",
                     "group": "1_textCompareSet@1"
@@ -98,11 +115,53 @@
                     "command": "textCompare.compareClipboardWithSelection",
                     "group": "3_textCompareClipboard"
                 }
+            ],
+            "textCompare.explorerSubmenu": [
+                {
+                    "command": "textCompare.setSourceFromExplorer",
+                    "group": "1_textCompareSet@1",
+                    "when": "!explorerResourceIsFolder"
+                },
+                {
+                    "command": "textCompare.setSourceFromClipboard",
+                    "group": "1_textCompareSet@2"
+                },
+                {
+                    "command": "textCompare.setSourceFromFile",
+                    "group": "1_textCompareSet@3"
+                },
+                {
+                    "command": "textCompare.compareSourceWithExplorer",
+                    "group": "2_textCompareSource@1",
+                    "when": "!explorerResourceIsFolder"
+                },
+                {
+                    "command": "textCompare.compareSourceWithClipboard",
+                    "group": "2_textCompareSource@2"
+                },
+                {
+                    "command": "textCompare.compareSourceWithFile",
+                    "group": "2_textCompareSource@3"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "textCompare.setSourceFromExplorer",
+                    "when": "false"
+                },
+                {
+                    "command": "textCompare.compareSourceWithExplorer",
+                    "when": "false"
+                }
             ]
         },
         "submenus": [
             {
-                "id": "textCompare.submenu",
+                "id": "textCompare.editorSubmenu",
+                "label": "Text Compare"
+            },
+            {
+                "id": "textCompare.explorerSubmenu",
                 "label": "Text Compare"
             }
         ],
@@ -113,6 +172,11 @@
                     "type": "boolean",
                     "default": false,
                     "description": "If enabled then hides the Text Compare commands in the editor context menu."
+                },
+                "textCompare.hideCommandsInExplorerContextMenu": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If enabled then hides the Text Compare commands in the explorer context menu."
                 }
             }
         }

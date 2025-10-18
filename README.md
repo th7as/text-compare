@@ -10,7 +10,13 @@ with
 * the clipboard or
 * the content of any text file
 
-![Screenshot](https://raw.githubusercontent.com/th7as/text-compare/master/images/demo.png)
+## Editor context menu
+
+![Screenshot](https://raw.githubusercontent.com/th7as/text-compare/master/images/editor.png)
+
+## Explorer context menu
+
+![Screenshot](https://raw.githubusercontent.com/th7as/text-compare/master/images/explorer.png)
 
 ## Commands
 
@@ -34,6 +40,7 @@ This extension contributes the following commands:
 
 ## Settings
 
-This extension contributes the following setting:
+This extension contributes the following settings:
 
 * `textCompare.hideCommandsInEditorContextMenu`: If enabled then hides the Text Compare commands in the editor context menu.
+* `textCompare.hideCommandsInExplorerContextMenu`: If enabled then hides the Text Compare commands in the explorer context menu.

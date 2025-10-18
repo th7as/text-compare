@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.0
+
+- Added Text Compare commands to explorer context menu
+
 ## 1.0.4
 
 - Updated readme
