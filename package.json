@@ -11,7 +11,7 @@
         "url": "https://github.com/th7as/text-compare.git"
     },
     "engines": {
-        "vscode": "^1.98.0"
+        "vscode": "^1.91.0"
     },
     "categories": [
         "Other"
@@ -196,7 +196,7 @@
         "test": "vscode-test"
     },
     "devDependencies": {
-        "@types/vscode": "^1.98.0",
+        "@types/vscode": "^1.91.0",
         "@types/mocha": "^10.0.10",
         "@types/node": "20.x",
         "@typescript-eslint/eslint-plugin": "^8.25.0",
