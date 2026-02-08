@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.1
+
+- Dropped minimum version of VS Code from 1.98 to 1.91
+
 ## 1.1.0
 
 - Added Text Compare commands to explorer context menu
